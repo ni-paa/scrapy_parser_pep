@@ -1,10 +1,10 @@
 attrs==21.4.0
 Automat==20.2.0
-cffi==1.15.0
+cffi>=1.15.0
 constantly==15.1.0
 cryptography==36.0.2
 cssselect==1.1.0
-flake8==4.0.1
+flake8>=4.0.1
 h2==3.2.0
 hpack==3.0.0
 hyperframe==5.2.0
@@ -16,7 +16,7 @@ iniconfig==1.1.1
 itemadapter==0.4.0
 itemloaders==1.0.4
 jmespath==1.0.0
-lxml==4.8.0
+lxml>=4.8.0
 mccabe==0.6.1
 packaging==21.3
 parsel==1.6.0
