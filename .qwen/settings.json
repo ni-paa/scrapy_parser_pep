@@ -1,0 +1,19 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(scrapy *)",
+      "Bash(pip install *)",
+      "Bash(pip show *)",
+      "Bash(mkdir *)",
+      "Bash(pytest)",
+      "Bash(set *)",
+      "Bash(python *)",
+      "Bash(del *)",
+      "WebFetch(peps.python.org)",
+      "Bash(findstr *)",
+      "Bash(type *)",
+      "Bash(flake8 *)"
+    ]
+  },
+  "$version": 3
+}
