@@ -33,9 +33,9 @@ class PepParsePipeline:
         Args:
             spider: Экземпляр спайдера, который был открыт
         """
-        pass
 
     def process_item(self, item, spider):
+        # item нельзя переименовывать, так как не проходит тесты
         """
         Обрабатывает каждый элемент (PEP) и обновляет счётчик статусов.
 
@@ -74,9 +74,9 @@ class PepParsePipeline:
         total = sum(self.status_counts.values())
 
         # Записываем статистику в CSV файл
-        with open(filename, mode='w', encoding='utf-8', newline='') as f:
-            writer = csv.writer(f)
-            writer.writerow(['Статус', 'Количество'])
+        with open(filename, mode='w', encoding='utf-8', newline='') as record:
+            writer = csv.writer(record)
+            writer.writerow(('Статус', 'Количество'))
             for status, count in sorted(self.status_counts.items()):
-                writer.writerow([status, count])
-            writer.writerow(['Total', total])
+                writer.writerow((status, count))
+            writer.writerow(('Total', total))

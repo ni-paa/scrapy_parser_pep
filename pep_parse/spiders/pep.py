@@ -21,6 +21,7 @@ class PepSpider(scrapy.Spider):
     """
 
     name = 'pep'
+    # Если адреса делать в круглых кавчках, то тесты не проходит работа
     allowed_domains = ['peps.python.org']
     start_urls = ['https://peps.python.org/']
 
@@ -61,7 +62,7 @@ class PepSpider(scrapy.Spider):
             PepParseItem с полями number, name, status
         """
         # Парсим страницу отдельного PEP
-        item = PepParseItem()
+        item_page = PepParseItem()
 
         # Заголовок PEP вида "PEP 8 – Style Guide for Python Code"
         # Пытаемся найти заголовок в специальном элементе, иначе — в общем h1
@@ -102,8 +103,11 @@ class PepSpider(scrapy.Spider):
 
         # Номер в int, если это возможно, иначе — строка
         is_valid_number = pep_number and pep_number.isdigit()
-        item['number'] = int(pep_number) if is_valid_number else pep_number
-        item['name'] = pep_title
-        item['status'] = pep_status
+        if is_valid_number:
+            item_page['number'] = int(pep_number)
+        else:
+            item_page['number'] = pep_number
+        item_page['name'] = pep_title
+        item_page['status'] = pep_status
 
-        yield item
+        yield item_page

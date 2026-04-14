@@ -46,7 +46,7 @@ class PepParseSpiderMiddleware:
         """
         return None
 
-    def process_spider_output(self, response, result, spider):
+    def process_spider_output(self, response, result_request, spider):
         """
         Обрабатывает выходные данные спайдера (items и requests).
 
@@ -58,8 +58,8 @@ class PepParseSpiderMiddleware:
         Yields:
             Каждый элемент из результата без модификаций
         """
-        for i in result:
-            yield i
+        for element in result_request:
+            yield element
 
     def process_spider_exception(self, response, exception, spider):
         """
@@ -73,7 +73,6 @@ class PepParseSpiderMiddleware:
         Returns:
             None — исключение обрабатывается стандартным способом
         """
-        pass
 
     def process_start_requests(self, start_requests, spider):
         """
@@ -86,8 +85,8 @@ class PepParseSpiderMiddleware:
         Yields:
             Каждый стартовый запрос без модификаций
         """
-        for r in start_requests:
-            yield r
+        for psr in start_requests:
+            yield psr
 
     def spider_opened(self, spider):
         """
